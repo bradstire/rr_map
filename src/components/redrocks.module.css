@@ -8,7 +8,7 @@
 
 .mapWrapper {
   position: relative;
-  width: min(1050px, 66.5vw); /* Scaled down 30% from 1500px/95vw */
+  width: min(1500px, 95vw);
   aspect-ratio: 2160 / 1741; /* Enforce natural aspect ratio to prevent stretching */
 }
 
