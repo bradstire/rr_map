@@ -1,0 +1,184 @@
+.pageRoot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #0b0b0b;
+}
+
+.mapWrapper {
+  position: relative;
+  width: min(1500px, 95vw);
+  aspect-ratio: 2160 / 1741; /* Enforce natural aspect ratio to prevent stretching */
+}
+
+.mapImage {
+  width: 100%;
+  height: auto; /* Let image use natural aspect ratio */
+  display: block;
+}
+
+.pinButton {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  transform-origin: center bottom;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: transform 150ms ease, filter 150ms ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+  z-index: 1; /* Lower z-index so hover cards appear above */
+}
+
+.pinButton:hover {
+  transform: translate(-50%, calc(-100% - 6px)) scale(1.05);
+}
+
+.hoverCard {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 450px; /* Increased 25% from 360px */
+  background: #1a1a1a;
+  border: 3px solid white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  pointer-events: auto; /* Allow mouse events for hover persistence */
+  z-index: 10; /* Higher z-index to appear above pin buttons */
+}
+.hoverBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ff4d6d;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.hoverImageWrap {
+  width: 100%;
+  height: 225px; /* Increased 25% from 180px */
+}
+.hoverImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.expandedCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1200px, 85vw);
+  max-height: min(80vh, 800px);
+  background: #1a1a1a;
+  border: 4px solid white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  z-index: 20; /* Above everything */
+  cursor: pointer;
+}
+
+.expandedBadge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #ff4d6d;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 21;
+}
+
+.expandedImageWrap {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.expandedImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.modalFrame {
+  position: relative;
+  width: min(900px, 92vw);
+  height: min(70vh, 700px);
+  background: #121212;
+  border: 4px solid white;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  overflow: hidden;
+}
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #2a2a2a;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 22;
+  transition: background 150ms ease;
+  padding: 0;
+}
+.closeBtn:hover {
+  background: #3a3a3a;
+}
+.modalNote {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  color: white;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+.modalImageViewport {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  cursor: grab;
+}
+.modalImageViewport:active { cursor: grabbing; }
+.modalImage {
+  user-select: none;
+  will-change: transform;
+  transition: transform 120ms ease;
+  max-width: none;
+}
+
+
